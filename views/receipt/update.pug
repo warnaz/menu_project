@@ -1,0 +1,62 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Update Recipe
+    style.
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        color: #333;
+      }
+      form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 600px;
+        margin: 20px auto;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+      input[type='text'],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box; /* added for proper sizing */
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+  body
+    h1 Update Recipe
+    form(action=`/receipts/${receipt._id}`, method='POST') 
+      input(type='hidden', name='_method', value='PUT') 
+      label(for='name') Name:
+      input(type='text', id='name', name='name', value=receipt.name)
+      
+      label(for='description') Description:
+      textarea(id='description', name='description')= receipt.description
+      
+      label(for='receipt') Recipe:
+      input(type='text', id='receipt', name='receipt', value=receipt.receipt)
+      
+      button(type='submit') Update
